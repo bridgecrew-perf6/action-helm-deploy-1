@@ -125,7 +125,7 @@ async function deploy() {
         await createDeploymentStatus(deployment.data.id, "success")
     } catch (ex) {
         try {
-            await createDeploymentStatus(deployment.data.id, "failed")
+            await createDeploymentStatus(deployment.data.id, "failure")
         } catch (ex) {
             core.warning(`Failed to set deployment state to failed: ${ex}`)
         }
