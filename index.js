@@ -121,6 +121,11 @@ async function deploy() {
             helmArgs.push(`ingressroute.rule=${process.env['INGRESS_RULE']}`)
         }
 
+        if (process.env['IMAGE_TAG']) {
+            helmArgs.push('--set')
+            helmArgs.push(`image.tag=${process.env['IMAGE_TAG']}`)
+        }
+
         await helm(helmArgs)
         await createDeploymentStatus(deployment.data.id, "success")
     } catch (ex) {
