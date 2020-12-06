@@ -17,6 +17,7 @@ async function createDeployment() {
         repo: context.payload.repository.name,
         ref: context.sha,
         required_contexts: [],
+        auto_merge: false,
         environment: process.env['DEPLOY_ENV'],
     }
     core.info(`Creating deployment: ${JSON.stringify(payload)}`)
