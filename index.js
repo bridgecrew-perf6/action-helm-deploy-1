@@ -12,10 +12,16 @@ async function createDeployment() {
 
     // const transient_environment = process.env['GITHUB_EVENT_NAME'] === 'pull_request'
 
+    deploy_ref = context.sha
+
+    if (process.env['GITHUB_EVENT_NAME'] === 'pull_request') {
+        deploy_ref = process.env['GITHUB_HEAD_REF']
+    }
+
     const payload = {
         owner: context.payload.repository.owner.login,
         repo: context.payload.repository.name,
-        ref: context.sha,
+        ref: deploy_ref,
         required_contexts: [],
         auto_merge: false,
         environment: process.env['DEPLOY_ENV'],
