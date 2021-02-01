@@ -70,7 +70,7 @@ async function deleteDeployment() {
 
 async function createDeploymentStatus(deployment_id, state) {
 
-    const log_url = `https://github.com/overlordtm/website/runs/${context.runId}`
+    const log_url = `https://github.com/sledilnik/website/runs/${context.runId}`
     const environment_url = process.env['DEPLOY_URL']
 
     const payload = {
